@@ -28,13 +28,22 @@ class ApplicationTests {
 
 	@Test
 	void testCreacionOpor(){
-		OporClient oportunidad = new OporClient(null, false,2,  "Prueba", "pruebna@gmail.com", "1685a8231356", false);
+		OporClient oportunidad = new OporClient(null, false,2,  "Prueba1", "pruebna1@gmail.com", "1685a8231356", false);
 		assertEquals(oporClientDAO.crearOportunidad(oportunidad), oportunidad);
 	}
 
 	@Test
 	void testOporToClient(){
-		OporClient oportunidad = new OporClient(null, false,3,  "Matias", "Matias@gmail.com", "1685a8231356", false);
-		assertEquals(oporClientDAO.oporToCliente(3).getClient(), true);
+		assertEquals(oporClientDAO.oporToCliente(2).getClient(), true);
+	}
+
+	@Test
+	void testBorrarCliente(){
+		assertEquals(oporClientDAO.borrarCliente(2).isDelete(), true);
+	}
+
+	@Test
+	void testBorrarOpor(){
+		assertEquals(oporClientDAO.borrarOportunidad(1).isDelete(), true);
 	}
 }

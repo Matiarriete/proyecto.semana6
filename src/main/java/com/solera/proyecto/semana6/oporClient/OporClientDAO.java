@@ -32,21 +32,21 @@ public class OporClientDAO {
     }
 
     public OporClient oporToCliente(int oporId){
-        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId().equals(oporId);
+        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == oporId;
         OporClient oporClient = oporClients.stream().filter(predicate).findFirst().get();
         oporClient.setClient(true);
         return oporClient;
     }
 
     public OporClient borrarOportunidad(int oporId){
-        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId().equals(oporId);
+        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == oporId;
         OporClient oporClient = oporClients.stream().filter(predicate).findFirst().get();
         oporClient.setDelete(true);
         return oporClient;
     }
 
     public OporClient borrarCliente(int oporId){
-        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId().equals(oporId);
+        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == oporId;
         OporClient oporClient = oporClients.stream().filter(predicate).findFirst().get();
         oporClient.setDelete(true);
         return oporClient;
