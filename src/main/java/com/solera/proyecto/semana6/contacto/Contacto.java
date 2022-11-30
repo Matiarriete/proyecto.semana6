@@ -1,17 +1,18 @@
 package com.solera.proyecto.semana6.contacto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Contacto {
     public String typeContact;
     public Integer id;
     public String result;
-    public Date contactDate;
+    public LocalDate contactDate;
 
     public Contacto() {
     }
 
-    public Contacto(String typeContact, Integer id, String result, Date contactDate) {
+    public Contacto(String typeContact, Integer id, String result, LocalDate contactDate) {
         this.typeContact = typeContact;
         this.id = id;
         this.result = result;
@@ -52,11 +53,11 @@ public class Contacto {
         this.result = result;
     }
 
-    public Date getContactDate() {
+    public LocalDate getContactDate() {
         return contactDate;
     }
 
-    public void setContactDate(Date contactDate) {
+    public void setContactDate(LocalDate contactDate) {
         this.contactDate = contactDate;
     }
 

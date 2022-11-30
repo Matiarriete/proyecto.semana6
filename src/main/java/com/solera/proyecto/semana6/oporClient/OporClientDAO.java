@@ -5,20 +5,24 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import com.google.gson.Gson;
+import com.solera.proyecto.semana6.contacto.Contacto;
 
 public class OporClientDAO {
 
     static List<OporClient> oporClients = new ArrayList<>();
-
+    static List< Contacto > list = new ArrayList<>();
     private static int oporClientCount = 0;
 
     static {
-        oporClients.add(new OporClient(null, false, ++oporClientCount, "Prueba1",
+        oporClients.add(new OporClient(list, false, ++oporClientCount, "Prueba1",
                 "pruebna@gmail.com", "1685a8231356", false, ""));
-        oporClients.add(new OporClient(null, true, ++oporClientCount, "Prueba2",
+        oporClients.add(new OporClient(list, true, ++oporClientCount, "Prueba2",
                 "pruebna@gmail.com", "1685a8231356", false, ""));
     }
 
+    public List<OporClient> getAll(){
+        return oporClients;
+    }
     public List<OporClient> getOportunidades() {
         Predicate<? super OporClient> predicate = oporClient -> !oporClient.getClient() && !oporClient.isDelete();
         return oporClients.stream().filter(predicate).collect(Collectors.toList());
@@ -29,8 +33,13 @@ public class OporClientDAO {
         return oporClients.stream().filter(predicate).collect(Collectors.toList());
     }
 
+    public OporClient getClientId(int id){
+        Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == id;
+        System.out.println(id);
+        return oporClients.stream().filter(predicate).findFirst().get();
+    }
+
     public OporClient crearOportunidad(OporClient oportunidad){
-        System.out.println(oportunidad.toString());
         oportunidad.setId(++oporClientCount);
         oporClients.add(oportunidad);
         return oportunidad;

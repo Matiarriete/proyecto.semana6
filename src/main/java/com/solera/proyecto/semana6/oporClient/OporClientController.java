@@ -10,6 +10,15 @@ public class OporClientController {
 
     OporClientDAO oporClientDAO = new OporClientDAO();
 
+    @GetMapping("/all")
+    public List<OporClient> getAll(){
+        return oporClientDAO.getAll();
+    }
+
+    @GetMapping("/obtenerId")
+    public OporClient getClientId(@PathVariable int id){
+        return oporClientDAO.getClientId(id);
+    }
     @GetMapping("/oportunidades")
     public List<OporClient> getOportunidades(){
         return oporClientDAO.getOportunidades();
