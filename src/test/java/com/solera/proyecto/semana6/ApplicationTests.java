@@ -28,13 +28,13 @@ class ApplicationTests {
 
 	@Test
 	void testCreacionOpor(){
-		OporClient oportunidad = new OporClient(null, false,2,  "Prueba1", "pruebna1@gmail.com", "1685a8231356", false);
+		OporClient oportunidad = new OporClient(null, false,2,  "Prueba1", "pruebna1@gmail.com", "1685a8231356", false, "");
 		assertEquals(oporClientDAO.crearOportunidad(oportunidad), oportunidad);
 	}
 
 	@Test
 	void testOporToClient(){
-		assertEquals(oporClientDAO.oporToCliente(2).getClient(), true);
+		assertEquals(oporClientDAO.oporToCliente(2, "PruebaClaveFiscal").getClient(), true);
 	}
 
 	@Test

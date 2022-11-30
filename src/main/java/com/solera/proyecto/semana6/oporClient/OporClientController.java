@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.OPTIONS, RequestMethod.POST})
 public class OporClientController {
 
     OporClientDAO oporClientDAO = new OporClientDAO();
@@ -22,12 +22,13 @@ public class OporClientController {
 
     @PostMapping("/oportunidades")
     public  OporClient crearOportunidades(@RequestBody OporClient oportunidad){
+        System.out.println("PruebA");
         return oporClientDAO.crearOportunidad(oportunidad);
     }
 
     @PutMapping("/oporToClient/{oporId}")
-    public OporClient oporToCliente(@PathVariable int oporId){
-        return oporClientDAO.oporToCliente(oporId);
+    public OporClient oporToCliente(@RequestBody String claveFiscal, @PathVariable(value = "oporId") int oporId){
+        return oporClientDAO.oporToCliente(oporId, claveFiscal);
     }
 
     @PutMapping("/borrarClient/{oporId}")

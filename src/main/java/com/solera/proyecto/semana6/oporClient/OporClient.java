@@ -13,8 +13,10 @@ public class OporClient {
     public String mail;
     public String phoneNumber;
     public boolean isDelete;
+    public String claveFiscal;
 
-    public OporClient(List<Contacto> contacts, Boolean isClient, Integer id, String name, String mail, String phoneNumber, boolean isDelete) {
+
+    public OporClient(List<Contacto> contacts, Boolean isClient, Integer id, String name, String mail, String phoneNumber, boolean isDelete, String claveFiscal) {
         this.contacts = contacts;
         this.isClient = isClient;
         this.id = id;
@@ -22,6 +24,7 @@ public class OporClient {
         this.mail = mail;
         this.phoneNumber = phoneNumber;
         this.isDelete = isDelete;
+        this.claveFiscal = claveFiscal;
     }
 
     public OporClient() {
@@ -83,6 +86,14 @@ public class OporClient {
         isDelete = delete;
     }
 
+    public String getClaveFiscal() {
+        return claveFiscal;
+    }
+
+    public void setClaveFiscal(String claveFiscal) {
+        this.claveFiscal = claveFiscal;
+    }
+
     @Override
     public String toString() {
         return "OporClient{" +
@@ -93,6 +104,7 @@ public class OporClient {
                 ", mail='" + mail + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", isDelete=" + isDelete +
+                ", claveFiscal='" + claveFiscal + '\'' +
                 '}';
     }
 }

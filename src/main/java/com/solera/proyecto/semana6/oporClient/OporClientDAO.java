@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import com.google.gson.Gson;
 
 public class OporClientDAO {
 
@@ -12,7 +13,10 @@ public class OporClientDAO {
     private static int oporClientCount = 0;
 
     static {
-        oporClients.add(new OporClient(null, false, ++oporClientCount, "Prueba", "pruebna@gmail.com", "1685a8231356", false));
+        oporClients.add(new OporClient(null, false, ++oporClientCount, "Prueba1",
+                "pruebna@gmail.com", "1685a8231356", false, ""));
+        oporClients.add(new OporClient(null, true, ++oporClientCount, "Prueba2",
+                "pruebna@gmail.com", "1685a8231356", false, ""));
     }
 
     public List<OporClient> getOportunidades() {
@@ -26,15 +30,18 @@ public class OporClientDAO {
     }
 
     public OporClient crearOportunidad(OporClient oportunidad){
+        System.out.println(oportunidad.toString());
         oportunidad.setId(++oporClientCount);
         oporClients.add(oportunidad);
         return oportunidad;
     }
 
-    public OporClient oporToCliente(int oporId){
+    public OporClient oporToCliente(int oporId, String claveFiscal){
         Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == oporId;
         OporClient oporClient = oporClients.stream().filter(predicate).findFirst().get();
         oporClient.setClient(true);
+        OporClient data = new Gson().fromJson(claveFiscal, OporClient.class);
+        oporClient.setClaveFiscal(data.getClaveFiscal());
         return oporClient;
     }
 
