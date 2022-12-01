@@ -15,7 +15,7 @@ public class OporClientController {
         return oporClientDAO.getAll();
     }
 
-    @GetMapping("/obtenerId")
+    @GetMapping("/obtenerId/{id}")
     public OporClient getClientId(@PathVariable int id){
         return oporClientDAO.getClientId(id);
     }

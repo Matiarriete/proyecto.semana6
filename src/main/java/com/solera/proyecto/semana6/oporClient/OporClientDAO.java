@@ -10,13 +10,12 @@ import com.solera.proyecto.semana6.contacto.Contacto;
 public class OporClientDAO {
 
     static List<OporClient> oporClients = new ArrayList<>();
-    static List< Contacto > list = new ArrayList<>();
     private static int oporClientCount = 0;
 
     static {
-        oporClients.add(new OporClient(list, false, ++oporClientCount, "Prueba1",
+        oporClients.add(new OporClient(new ArrayList<>(), false, ++oporClientCount, "Prueba1",
                 "pruebna@gmail.com", "1685a8231356", false, ""));
-        oporClients.add(new OporClient(list, true, ++oporClientCount, "Prueba2",
+        oporClients.add(new OporClient(new ArrayList<>(), true, ++oporClientCount, "Prueba2",
                 "pruebna@gmail.com", "1685a8231356", false, ""));
     }
 

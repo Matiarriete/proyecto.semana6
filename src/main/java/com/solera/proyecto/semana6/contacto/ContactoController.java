@@ -14,9 +14,9 @@ public class ContactoController {
     public List<Contacto> getContactos(){
         return contactoDAO.getContactos();
     }
-    @PostMapping("/crearContacto/{idOporCliente}")
-    public Contacto crearContacto(@RequestBody Contacto contacto, @PathVariable int idOporCliente){
-        return contactoDAO.crearContacto(contacto, idOporCliente);
+    @PostMapping("/crearContacto")
+    public Contacto crearContacto(@RequestBody Contacto contacto){
+        return contactoDAO.crearContacto(contacto);
     }
 
 

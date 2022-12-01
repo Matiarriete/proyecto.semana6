@@ -8,15 +8,17 @@ public class Contacto {
     public Integer id;
     public String result;
     public LocalDate contactDate;
+    public Integer idOporCliente;
 
     public Contacto() {
     }
 
-    public Contacto(String typeContact, Integer id, String result, LocalDate contactDate) {
+    public Contacto(String typeContact, Integer id, String result, LocalDate contactDate, Integer idOporCliente) {
         this.typeContact = typeContact;
         this.id = id;
         this.result = result;
         this.contactDate = contactDate;
+        this.idOporCliente = idOporCliente;
     }
 
     @Override
@@ -26,6 +28,7 @@ public class Contacto {
                 ", id=" + id +
                 ", result='" + result + '\'' +
                 ", contactDate=" + contactDate +
+                ", idOporCliente=" + idOporCliente +
                 '}';
     }
 
@@ -61,4 +64,11 @@ public class Contacto {
         this.contactDate = contactDate;
     }
 
+    public Integer getIdOporCliente() {
+        return idOporCliente;
+    }
+
+    public void setIdOporCliente(Integer idOporCliente) {
+        this.idOporCliente = idOporCliente;
+    }
 }
