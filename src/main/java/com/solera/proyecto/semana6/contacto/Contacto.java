@@ -8,18 +8,8 @@ public class Contacto {
     public Integer id;
     public String result;
     public LocalDate contactDate;
+    public String nameOporCliente;
     public Integer idOporCliente;
-
-    public Contacto() {
-    }
-
-    public Contacto(String typeContact, Integer id, String result, LocalDate contactDate, Integer idOporCliente) {
-        this.typeContact = typeContact;
-        this.id = id;
-        this.result = result;
-        this.contactDate = contactDate;
-        this.idOporCliente = idOporCliente;
-    }
 
     @Override
     public String toString() {
@@ -28,8 +18,29 @@ public class Contacto {
                 ", id=" + id +
                 ", result='" + result + '\'' +
                 ", contactDate=" + contactDate +
+                ", nameOporCliente='" + nameOporCliente + '\'' +
                 ", idOporCliente=" + idOporCliente +
                 '}';
+    }
+
+    public Contacto() {
+    }
+
+    public Contacto(String typeContact, Integer id, String result, LocalDate contactDate, String nameOporCliente, Integer idOporCliente) {
+        this.typeContact = typeContact;
+        this.id = id;
+        this.result = result;
+        this.contactDate = contactDate;
+        this.nameOporCliente = nameOporCliente;
+        this.idOporCliente = idOporCliente;
+    }
+
+    public Integer getIdOporCliente() {
+        return idOporCliente;
+    }
+
+    public void setIdOporCliente(Integer idOporCliente) {
+        this.idOporCliente = idOporCliente;
     }
 
     public Integer getId() {
@@ -64,11 +75,11 @@ public class Contacto {
         this.contactDate = contactDate;
     }
 
-    public Integer getIdOporCliente() {
-        return idOporCliente;
+    public String getNameOporCliente() {
+        return nameOporCliente;
     }
 
-    public void setIdOporCliente(Integer idOporCliente) {
-        this.idOporCliente = idOporCliente;
+    public void setNameOporCliente(String nameOporCliente) {
+        this.nameOporCliente = nameOporCliente;
     }
 }

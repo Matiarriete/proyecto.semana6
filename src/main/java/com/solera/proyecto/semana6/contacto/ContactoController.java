@@ -14,11 +14,14 @@ public class ContactoController {
     public List<Contacto> getContactos(){
         return contactoDAO.getContactos();
     }
-    @PostMapping("/crearContacto")
-    public Contacto crearContacto(@RequestBody Contacto contacto){
-        return contactoDAO.crearContacto(contacto);
+    @PostMapping("/crearContacto/{idOporCliente}")
+    public Contacto crearContacto(@RequestBody Contacto contacto, @PathVariable Integer idOporCliente){
+        return contactoDAO.crearContacto(contacto, idOporCliente);
     }
-
+    @PostMapping("/contacto/{id}")
+    public boolean borrarContacto(@PathVariable Integer id){
+        return contactoDAO.borrarContacto(id);
+    }
 
 
 }

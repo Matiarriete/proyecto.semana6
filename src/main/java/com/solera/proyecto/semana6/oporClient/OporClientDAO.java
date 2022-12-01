@@ -20,7 +20,8 @@ public class OporClientDAO {
     }
 
     public List<OporClient> getAll(){
-        return oporClients;
+        Predicate<? super OporClient> predicate = oporClient -> !oporClient.isDelete();
+        return oporClients.stream().filter(predicate).collect(Collectors.toList());
     }
     public List<OporClient> getOportunidades() {
         Predicate<? super OporClient> predicate = oporClient -> !oporClient.getClient() && !oporClient.isDelete();
@@ -34,11 +35,11 @@ public class OporClientDAO {
 
     public OporClient getClientId(int id){
         Predicate<? super OporClient> predicate = oporClient -> oporClient.getId() == id;
-        System.out.println(id);
         return oporClients.stream().filter(predicate).findFirst().get();
     }
 
     public OporClient crearOportunidad(OporClient oportunidad){
+        oportunidad.setContacts(new ArrayList<>());
         oportunidad.setId(++oporClientCount);
         oporClients.add(oportunidad);
         return oportunidad;

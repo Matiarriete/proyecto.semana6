@@ -5,6 +5,7 @@ import com.solera.proyecto.semana6.oporClient.OporClientDAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ContactoDAO {
 
@@ -15,16 +16,34 @@ public class ContactoDAO {
         return contactos;
     }
 
-    public Contacto crearContacto(Contacto contacto){
+    public Contacto getContactoId(Integer id) {
+        Predicate<? super Contacto> predicate = contactos -> contactos.getId() == id;
+        return contactos.stream().filter(predicate).findFirst().get();
+    }
+
+    public Contacto crearContacto(Contacto contacto, Integer idOdorClient){
         try{
             OporClientDAO oporClientDAO = new OporClientDAO();
             contacto.setId(++idContactos);
-            oporClientDAO.getClientId(contacto.getIdOporCliente()).getContacts().add(contacto);
+            OporClient newOporClient = oporClientDAO.getClientId(idOdorClient);
+            contacto.setNameOporCliente(newOporClient.name);
+            contacto.setIdOporCliente(idOdorClient);
+            newOporClient.getContacts().add(contacto);
             contactos.add(contacto);
         }catch(Exception e){
             e.printStackTrace();
         }
         return contacto;
+    }
+
+    public boolean borrarContacto(Integer id){
+        Contacto contacto = getContactoId(id);
+        OporClientDAO oporClientDAO =new OporClientDAO();
+        if (oporClientDAO.getClientId(contacto.getIdOporCliente()).getContacts().remove(contacto))
+            if (contactos.remove(contacto))
+                return true;
+
+        return false;
     }
 
 }

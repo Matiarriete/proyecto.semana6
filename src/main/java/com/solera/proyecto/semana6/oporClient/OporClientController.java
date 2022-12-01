@@ -40,12 +40,12 @@ public class OporClientController {
         return oporClientDAO.oporToCliente(oporId, claveFiscal);
     }
 
-    @PutMapping("/borrarClient/{oporId}")
+    @PostMapping("/borrarClient/{oporId}")
     public OporClient borrarCliente(@PathVariable int oporId){
         return oporClientDAO.borrarCliente(oporId);
     }
 
-    @PutMapping("/borrarOpor/{oporId}")
+    @PostMapping("/borrarOpor/{oporId}")
     public OporClient borrarOpor(@PathVariable int oporId){
         return oporClientDAO.borrarOportunidad(oporId);
     }
