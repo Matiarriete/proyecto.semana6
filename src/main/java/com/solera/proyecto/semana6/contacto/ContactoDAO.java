@@ -17,7 +17,7 @@ public class ContactoDAO {
     }
 
     public Contacto getContactoId(Integer id) {
-        Predicate<? super Contacto> predicate = contactos -> contactos.getId() == id;
+        Predicate<? super Contacto> predicate = contact -> contact.getId() == id;
         return contactos.stream().filter(predicate).findFirst().get();
     }
 

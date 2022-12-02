@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import com.google.gson.Gson;
-import com.solera.proyecto.semana6.contacto.Contacto;
 
 public class OporClientDAO {
 

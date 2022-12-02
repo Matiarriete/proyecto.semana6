@@ -31,7 +31,6 @@ public class OporClientController {
 
     @PostMapping("/oportunidades")
     public  OporClient crearOportunidades(@RequestBody OporClient oportunidad){
-        System.out.println("PruebA");
         return oporClientDAO.crearOportunidad(oportunidad);
     }
 
